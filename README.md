@@ -58,4 +58,4 @@ A simple UNIX command line interpreter that works like the shell.
 ## Authors
 
 - [@JohnMariita](https://www.github.com/johnmariita)
-- [@EnockMbaraka](https://www.github.com/enockcity)
+- [@EnockMbaraka](https://www.github.com/EnockCity)

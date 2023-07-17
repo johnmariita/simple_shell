@@ -8,8 +8,8 @@
  */
 void handle_int(int num)
 {
-	int temp = num, i = 0, index;
-	char *buf = NULL;
+	int temp = num, i = 0, index = 0;
+	char buf[1024] = "";
 
 	if (num >= 0 && num <= 9)
 		_putchar(num + '0');
@@ -20,7 +20,6 @@ void handle_int(int num)
 			temp /= 10;
 			i++;
 		}
-		buf = malloc(i + 1);
 		index = i - 1;
 		while (num)
 		{
@@ -31,5 +30,4 @@ void handle_int(int num)
 		buf[i] = '\0';
 	}
 	_printf("%s", buf);
-	free(buf);
 }

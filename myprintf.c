@@ -9,13 +9,14 @@
  */
 void _printf(char *format, ...)
 {
-	int c, i = 0;
+	int c = 0, i = 0, ch_count = 0;
 	va_list ap;
-	char *str;
+	char *str = NULL;
 
 	va_start(ap, format);
 	while (format[i])
 	{
+		ch_count = 0;
 		if (format[i] == '%')
 		{
 			i++;
@@ -27,10 +28,10 @@ void _printf(char *format, ...)
 					break;
 				case 's':
 					str = va_arg(ap, char *);
-					while (*str)
+					while (str[ch_count])
 					{
-						_putchar(*str);
-						str++;
+						_putchar(str[ch_count]);
+						ch_count++;
 					}
 					break;
 				case 'd':

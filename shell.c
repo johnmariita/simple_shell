@@ -11,7 +11,7 @@
  * @argv: argument vector
  * Return: returns 0 on success
  */
-int main(__attribute__((unused))int argc, char *argv[])
+int main(__attribute__((unused))int argc, char *argv[], char **env)
 {
 	char *buffer = NULL;
 	char **cmd = NULL;
@@ -32,7 +32,7 @@ int main(__attribute__((unused))int argc, char *argv[])
 		}
 		remove_new_line(buffer);
 		cmd = tokenify(buffer);
-		execute(cmd, argv[0], line_count);
+		execute(cmd, argv[0], line_count, env);
 		free(buffer);
 		free(cmd);
 		if (!isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))

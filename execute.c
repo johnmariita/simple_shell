@@ -12,7 +12,7 @@
  * @args: the file name
  * @line: the line you're on in the shell
  */
-void execute(char **command, char *args, int line)
+void execute(char **command, char *args, int line, char **env)
 {
 	int pid;
 	char *path = getenv("PATH");
@@ -24,7 +24,7 @@ void execute(char **command, char *args, int line)
 	{
 		pid = fork();
 		if (pid == 0)
-			execve(command[0], command, NULL);
+			execve(command[0], command, env);
 		else
 			wait(NULL);
 		return;
@@ -43,7 +43,7 @@ void execute(char **command, char *args, int line)
 		{
 			pid = fork();
 			if (pid == 0)
-				execve(fullpath, command, NULL);
+				execve(fullpath, command, env);
 			else
 				wait(NULL);
 			_free(3, fullpath, filename, cp_path);

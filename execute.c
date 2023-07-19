@@ -11,6 +11,7 @@
  * @command: an array of strings i.e the commands
  * @args: the file name
  * @line: the line you're on in the shell
+ * @env: the environment variable
  */
 void execute(char **command, char *args, int line, char **env)
 {

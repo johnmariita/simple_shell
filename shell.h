@@ -1,6 +1,16 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#include <stddef.h>
+void env_func(char **);
+void exit_func(char **);
+typedef struct builtin builtin;
+extern struct builtin {
+	char *cmd;
+	void (*ptr)(char **);
+} command[];
+
+int is_builtin(char *cmd);
 int _putchar(int c);
 void _printf(char *format, ...);
 void handle_int(int num);

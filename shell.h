@@ -4,6 +4,7 @@
 #include <stddef.h>
 void env_func(char **);
 void exit_func(char **, char *);
+int handle_cd(char **);
 int is_builtin(char **, char **, int, char **, char *);
 int _putchar(int c);
 void _printf(char *format, ...);

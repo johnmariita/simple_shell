@@ -3,14 +3,8 @@
 
 #include <stddef.h>
 void env_func(char **);
-void exit_func(char **);
-typedef struct builtin builtin;
-extern struct builtin {
-	char *cmd;
-	void (*ptr)(char **);
-} command[];
-
-int is_builtin(char *cmd);
+void exit_func(char **, char *);
+int is_builtin(char **, char **, int, char **, char *);
 int _putchar(int c);
 void _printf(char *format, ...);
 void handle_int(int num);
@@ -21,4 +15,5 @@ void remove_new_line(char *buffer);
 int _strlen(char *buff);
 int _strcmp(char *s1, char *s2);
 void _free(int count, ...);
+int _atoi(char *);
 #endif

@@ -5,27 +5,36 @@
 /**
  * is_builtin - function that checks if a command is an inbuilt
  * @cmd: the command
+ * @env: the environment variable
+ * @line: the line we're currently on
+ * @argv: the argument vector
+ * @buff: the buffer that was allocated in the getline
  * Return: returns the index of the inbuilt,
  * -1 if command isn't an inbuilt or if command is null
  */
-int is_builtin(char *cmd)
+int is_builtin(char **cmd, __attribute__((unused))char **env,
+		int line, char **argv, char *buff)
 {
-	builtin command[] = {
-		{"env", &env_func},
-		{"exit", &exit_func},
-		{NULL, NULL}
-	};
 	int i = 0;
 
-	if (!cmd)
-		return (-1);
-	while (command[i].cmd)
+	if (_strcmp("exit", cmd[0]) == 0)
 	{
-		if (_strcmp(command[i].cmd, cmd) == 0)
-		{
-			return (i);
-		}
-		i++;
+		exit_func(cmd, buff);
+		_printf("%s: %d: exit: Illegal number: %s\n",
+				argv[0], line, cmd[1]);
+		free(cmd);
+		return (1);
 	}
-	return (-1);
+	if (_strcmp("env", cmd[0]) == 0)
+	{
+		while (env[i])
+		{
+			_printf("%s\n", env[i]);
+			i++;
+		}
+		free(cmd);
+		return (1);
+	}
+	else
+		return (-1);
 }

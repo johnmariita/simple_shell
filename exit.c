@@ -1,11 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "shell.h"
 
 /**
  * exit_func - function that exits
- * @environ: the environment variable
+ * @cmd: the exit command
+ * @buff: the buff whose memory was allocated in the getline function
  */
-void exit_func(__attribute__((unused))char **environ)
+void exit_func(char **cmd, char *buff)
 {
-	exit(EXIT_SUCCESS);
+	int i;
+
+	if (!cmd[1])
+	{
+		_free(2, buff, cmd);
+		exit(EXIT_SUCCESS);
+	}
+	i = _atoi(cmd[1]);
+	if (i < 0)
+		return;
+	_free(2, buff, cmd);
+	exit(i);
 }

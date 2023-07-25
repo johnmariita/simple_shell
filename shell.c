@@ -16,8 +16,7 @@ int main(__attribute__((unused))int argc, char *argv[], char **env)
 {
 	char *buffer = NULL, **cmd = NULL;
 	size_t n = 1024;
-	int line_count = 1, gl = 0, i;
-	builtin command[] = {{"env", &env_func}, {"exit", &exit_func}, {NULL, NULL}};
+	int line_count = 1, gl = 0;
 
 	signal(SIGINT, &handle_sig);
 	while (1)
@@ -33,16 +32,13 @@ int main(__attribute__((unused))int argc, char *argv[], char **env)
 		}
 		remove_new_line(buffer);
 		cmd = tokenify(buffer);
-		i = is_builtin(cmd[0]);
-		if (i != -1 && cmd[0])
+		if (*cmd)
 		{
-			line_count++;
-			if (i == 0)
-				_free(1, cmd);
-			else
-				_free(2, cmd, buffer);
-			command[i].ptr(env);
-			continue;
+			if (is_builtin(cmd, env, line_count, argv, buffer) > 0)
+			{
+				line_count++;
+				continue;
+			}
 		}
 		execute(cmd, argv[0], line_count, env);
 		_free(2, buffer, cmd);

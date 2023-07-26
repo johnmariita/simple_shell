@@ -3,7 +3,7 @@
 #include "shell.h"
 
 /**
- * exit_func - function that exits
+ * exit_func - function that exits a program
  * @cmd: the exit command
  * @buff: the buff whose memory was allocated in the getline function
  */

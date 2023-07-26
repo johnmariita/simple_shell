@@ -3,8 +3,8 @@
 #include "shell.h"
 
 /**
- * handle_int - function that prints an integer
- * @num: the number to be printed
+ * handle_int - function that converts an integer into a string
+ * @num: the integer to be converted
  */
 void handle_int(int num)
 {

@@ -4,7 +4,7 @@
 #include "shell.h"
 
 /**
- * tokenify - function that converts a string int individual tokens
+ * tokenify - function that splits a string into individual tokens
  * @usr_cmd: the string to be tokenified
  * Return: returns the tokens
  */

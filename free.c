@@ -3,8 +3,8 @@
 #include <stdarg.h>
 
 /**
- * _free - function that frees some memory
- * @count: the number of memory blocks to be freed
+ * _free - function that frees some allocated memory
+ * @count: the memory blocks to be freed
  */
 void _free(int count, ...)
 {
